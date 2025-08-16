@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- The root pane, styled to match the application -->
+
+<StackPane alignment="CENTER" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahmed.WelcomeController">
+    <children>
+      <BorderPane prefHeight="200.0" prefWidth="709.0">
+         <center>
+              <!-- VBox to center the content vertically -->
+              <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="20.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
+                  <children>
+                  <Label text="Quality Control Toolbox" textFill="#0009ff">
+                     <font>
+                        <Font name="System Bold" size="43.0" />
+                     </font>
+                  </Label>
+                      <!-- Instructional Text -->
+                      <Label text="To get started, open a FASTQ file or drag and drop it onto the window." textFill="#333333">
+                          <font>
+                              <Font size="18.0" />
+                          </font>
+                      </Label>
+                  <Label text="Enter a processing limit or leave blank to process whole file." textFill="#333333">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Recent Files" underline="true">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="recentFilesVBox" alignment="TOP_CENTER" prefHeight="90.0" prefWidth="710.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  </children>
+                  <padding>
+                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  </padding>
+              </VBox>
+         </center>
+      </BorderPane>
+    </children>
+</StackPane>

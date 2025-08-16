@@ -1,0 +1,10 @@
+.scatter-chart .chart-symbol {
+   -fx-background-color: transparent;
+   -fx-padding: 0;
+   -fx-background-radius: 0;
+   -fx-background-insets: 0;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: transparent;
+}

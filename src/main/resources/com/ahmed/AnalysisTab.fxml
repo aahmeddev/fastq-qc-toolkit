@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahmed.AnalysisTabController">
+   <children>
+      <HBox prefHeight="683.0" prefWidth="959.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="622.0" prefWidth="291.0" style="-fx-border-color: grey; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+               <children>
+                  <RadioButton fx:id="baseStatisticsbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Base Statistics">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="DataSelection" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="perBaseSequenceQualitybtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Per Base Sequence Quality" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="perSequenceQualityScoresbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Per Sequence Quality Scores" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="perBaseSequenceContentbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Per Base Sequence Content" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="perSequenceGCContentbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Per Sequence GC Content" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="perBaseNContentbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Per base N Content" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="sequenceLengthDistributionbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Sequence Length Distribution" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="sequenceDuplicationLevelsbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Sequence Duplication Levels" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="overrepresentedSequencesbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Overrepresented Sequences" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="kmerContentbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Kmer Content" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="adapterContentbtn" graphicTextGap="2.0" lineSpacing="1.0" mnemonicParsing="false" text="Adapter Content" toggleGroup="$DataSelection">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <StackPane fx:id="chartParentPane" prefWidth="645.6" style="-fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: grey; -fx-background-color: white;" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <children>
+                  <StackPane fx:id="chartContainer" prefHeight="605.0" prefWidth="637.0" style="-fx-background-color: white;">
+                     <StackPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </StackPane.margin>
+                  </StackPane>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="944.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #d0d0d0; -fx-border-width: 1 0 0 0;">
+         <children>
+            <Button fx:id="exportReportButton" mnemonicParsing="false" onAction="#handleExportReport" prefHeight="26.0" prefWidth="194.0" text="Export to HTML">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+            <StackPane prefWidth="920.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label fx:id="statusLabel" mouseTransparent="true">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <StackPane mouseTransparent="true" prefHeight="4.0" prefWidth="200.0">
+                           <children>
+                              <ProgressBar fx:id="progressBar" prefWidth="200.0" visible="false" />
+                              <Label fx:id="progressLabel" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </StackPane>
+                     </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
