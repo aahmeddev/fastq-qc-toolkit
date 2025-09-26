@@ -35,7 +35,7 @@ A JavaFX application for analyzing FASTQ files to assess sequence quality. It pr
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/aahmeddev/QC-Toolkit.git
-    cd your-repository-name
+    cd QC-Toolkit
     ```
 
 2.  **Set up the Python environment:**
