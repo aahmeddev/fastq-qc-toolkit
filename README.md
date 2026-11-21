@@ -53,8 +53,8 @@ flowchart LR
 ### Installation
 
 ```bash
-git clone https://github.com/aahmeddev/QC-Toolkit.git
-cd QC-Toolkit
+git clone https://github.com/aahmeddev/fastq-qc-toolkit.git
+cd fastq-qc-toolkit
 
 # Create and activate Python virtual environment for plotting scripts
 python -m venv python_env
