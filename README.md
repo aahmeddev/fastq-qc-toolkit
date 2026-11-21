@@ -1,64 +1,83 @@
-# DNA Quality Control Toolkit
+# DNA Quality Control Toolkit (QCToolkit)
 
-A JavaFX application for analyzing FASTQ files to assess sequence quality. It provides a suite of tools for quality control, including various plots and statistical reports.
+[![Java](https://img.shields.io/badge/Java-22-ED8B00?logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![JavaFX](https://img.shields.io/badge/UI-JavaFX%2024-5382A1)](https://openjfx.io/)
+[![Python](https://img.shields.io/badge/Plotting-Python%203.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![Screenshot of the application's main window](/welcome_page.png)
+A FastQC-inspired desktop bioinformatics application built in Java 22, JavaFX, and Apache Maven for inspecting and trimming `.fastq` and `.fastq.gz` sequencing reads (tested on *E. coli* K-12 MG1655 `SRR490124`). Uses multi-threaded Java `ExecutorService` parsing paired with a Python plotting backend to generate 10 quality control visualisations and self-contained HTML reports.
+
+![Main window of the DNA Quality Control Toolkit](welcome_page.png)
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["FASTQ / FASTQ.GZ Input\n(Drag-and-Drop Multi-Tab UI)"] --> B["FastqAnalysisTask\n(Java ExecutorService + QualityControl)"]
+    B --> C["ModuleEvaluator\n(Pass / Warn / Fail Rules)"]
+    B --> D["PlotGenerator\n(7 Python Plotting Scripts)"]
+    C --> E["Interactive JavaFX Tabs"]
+    D --> E
+    E --> F["HtmlReportGenerator\n(Self-Contained HTML Export)"]
+    A --> G["TrimmingTask\n(Adapter & Low-Quality Base Trimming)"]
+```
 
 ## Key Features
 
-* **Interactive QC Reports:** Analyze `.fastq` and `.fastq.gz` files and view results in an interactive tabbed interface.
-* **Comprehensive Plots:** Generates a full suite of quality plots, including:
-    * Per Base Sequence Quality
-    * Per Sequence Quality Scores
-    * Sequence Duplication Levels
-    * Adapter Content
-* **Parallel Processing:** Leverages multi-core CPUs to analyze large FASTQ files significantly faster.
-* **Export Reports:** Save complete analysis results as a self-contained HTML file.
-* **Adapter & Quality Trimming:** Trim low-quality bases and adapter sequences from your files.
-* **Quality of Life:** Convenient features including drag-and-drop file support, a multi-tabbed interface for handling simultaneous analyses, and processing limits for quick data previews.
+- **Multi-Threaded FASTQ Parsing (`FastqAnalysisTask.java`, `QualityControl.java`):** Parses large `.fastq` and `.fastq.gz` read files on background threads (`ExecutorService` + JavaFX `Task`) without blocking the UI, with configurable read-preview limits.
+- **10 Quality Control Charts (`PlotGenerator.java`, `scripts/`):** Bridges Java process execution with 7 Python scripts (Matplotlib, NumPy, Pandas, SciPy, Pillow) covering Per Base Sequence Quality, Per Sequence Quality Scores, GC Content, Sequence Duplication Levels, K-mer Content, and Adapter Content.
+- **Adapter & Quality Trimming (`TrimmingTask.java`):** Trims low-quality bases and known adapter sequences (`adapter_list.txt`) directly inside the desktop workflow.
+- **Self-Contained HTML Export (`HtmlReportGenerator.java`):** Packages all evaluated QC modules, tables, and rendered charts into a portable HTML report.
 
-## Acknowledgments
+## Repository Structure
 
-* This project was heavily inspired by the original [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) tool.
+| Path | Description |
+| :--- | :--- |
+| `src/main/java/com/ahmed/App.java` | JavaFX application entry point. |
+| `src/main/java/com/ahmed/QualityControl.java` | Core FASTQ metric aggregation engine. |
+| `src/main/java/com/ahmed/FastqAnalysisTask.java` | Background multi-threaded parsing task. |
+| `src/main/java/com/ahmed/TrimmingTask.java` | Quality and adapter sequence trimming task. |
+| `src/main/java/com/ahmed/ModuleEvaluator.java` | FastQC-style pass/warn/fail threshold evaluator. |
+| `src/main/java/com/ahmed/PlotGenerator.java` | Java-to-Python subprocess bridge for chart rendering. |
+| `src/main/java/com/ahmed/report/HtmlReportGenerator.java` | Standalone HTML report builder. |
+| `scripts/` | 7 Python plotting scripts generating all 10 QC charts and summary tables. |
 
-## Setup & Installation
+## Setup & Running
 
 ### Prerequisites
 
-* Java Development Kit (JDK) 17 or newer
-* Apache Maven
-* Python 3.8 or newer
-* A JavaFX SDK compatible with your JDK version
+- **JDK 22** (or newer)
+- **Apache Maven**
+- **Python 3.10+**
 
 ### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/aahmeddev/QC-Toolkit.git
-    cd QC-Toolkit
-    ```
+```bash
+git clone https://github.com/aahmeddev/QC-Toolkit.git
+cd QC-Toolkit
 
-2.  **Set up the Python environment:**
-    ```bash
-    python -m venv python_env
-    # On Windows
-    python_env\Scripts\activate
-    # On macOS/Linux
-    source python_env/bin/activate
-    ```
+# Create and activate Python virtual environment for plotting scripts
+python -m venv python_env
+# Windows:
+python_env\Scripts\activate
+# macOS / Linux:
+source python_env/bin/activate
 
-3.  **Install Python dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+pip install -r requirements.txt
+```
 
-## How to Run
+### Build & Run
 
-You can build and run the application using Maven. Make sure to provide the path to your JavaFX SDK.
+Maven resolves JavaFX 24.0.1 automatically via `pom.xml`:
 
 ```bash
-# Example for Windows
-mvn clean javafx:run -Djavafx.sdk.path="C:\path\to\javafx-sdk-21"
+mvn clean javafx:run
+```
 
-# Example for macOS/Linux
-mvn clean javafx:run -Djavafx.sdk.path="/path/to/javafx-sdk-21"
+## Acknowledgements
+
+Inspired by [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) from the Babraham Institute.
+
+## License
+
+Released under the [MIT License](LICENSE).
